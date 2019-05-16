@@ -1216,10 +1216,11 @@ command_sign_domains() {
     line=''
     export alias
 
+    [[ -t 1 ]] && domain_display="\x1b[33;1m${domain}\x1b[0m" || domain_display="{domain}"
     if [[ -z "${morenames}" ]];then
-      echo "Processing ${domain}"
+      echo -e "Processing ${domain_display}"
     else
-      echo "Processing ${domain} with alternative names: ${morenames}"
+      echo -e "Processing ${domain_display} with alternative names: ${morenames}"
     fi
 
     if [ "${alias:0:2}" = "*." ]; then
